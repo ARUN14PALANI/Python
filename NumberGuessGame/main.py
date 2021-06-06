@@ -10,7 +10,7 @@ print(random_value)
 
 def check_greater(bot_value,player_value):
   if player_value == bot_value:
-    return "won"
+    return "Congrats, your guess is correct!"
   elif player_value > bot_value:
     return "Your prediction is higher than the actual value"
   elif player_value < bot_value:
@@ -18,15 +18,17 @@ def check_greater(bot_value,player_value):
 
 
 def game_predict(tries):
-  user_value = 0
+  user_value = int(input("Guess the number between 1 and 100 :"))
   for i in range (0,tries):
-    user_value = int(input("Guess the number between 1 and 100 :"))
-    if check_greater(random_value,user_value) == "won":
-      print(check_greater(random_value,user_value))
-      print("Congrats, your guess is correct!")
+    print(check_greater(random_value,user_value))
+    if check_greater(random_value,user_value) == "Congrats, your guess is correct!":
+      print("won")
       break
-    tries -= 1
-    print(f"left chances: {tries}")
+    else:
+        tries -= 1
+        print(f"left chances: {tries}")
+        user_value = int(input("Guess again :"))
+    
   if tries == 0:
     print("You lost the game")
 
