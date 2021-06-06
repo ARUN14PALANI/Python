@@ -2,11 +2,8 @@
 import art
 import random
 
-
 # Include an ASCII art logo.
-print(art.logo)
-random_value = int((random.choice(list(range(1,101)))))
-print(random_value)
+
 
 def check_greater(bot_value,player_value):
   if player_value == bot_value:
@@ -16,8 +13,7 @@ def check_greater(bot_value,player_value):
   elif player_value < bot_value:
     return "Your prediction is lower than the actual value"
 
-
-def game_predict(tries):
+def game_predict(tries,random_value):
   user_value = int(input("Guess the number between 1 and 100 :"))
   for i in range (0,tries):
     print(check_greater(random_value,user_value))
@@ -32,20 +28,27 @@ def game_predict(tries):
   if tries == 0:
     print("You lost the game")
 
-
-
-
-
 # Allow the player to submit a guess for a number between 1 and 100.
-game_level = input("Enter the difficulty level, hard or easy:")
+def game():
+    print(art.logo)
+    random_value = int((random.choice(list(range(1,101)))))
+    print(random_value)
+    game_level = input("Enter the difficulty level, hard or easy:")
+    if game_level == "hard":
+        chances = 5
+        game_predict(chances,random_value)
+    elif game_level == "easy":
+        chances = 10
+        game_predict(chances,random_value)
 
 
-if game_level == "hard":
-  chances = 5
-  game_predict(chances)
-elif game_level == "easy":
-  chances = 10
-  game_predict(chances)
+replay = "y"
+while replay =="y":
+    game()
+    replay = input("Want to replay the game enter y otherwise n :")
+    if replay =="n":
+        print("Thank you!")
+
 
 # Check user's guess against actual answer. Print "Too high." or "Too low." depending on the user's answer. 
 # If they got the answer correct, show the actual answer to the player.
