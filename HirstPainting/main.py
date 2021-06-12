@@ -14,7 +14,7 @@ color_list = [(202, 164, 109), (238, 240, 245), (150, 75, 49), (223, 201, 135), 
 turtle.colormode(255)
 tom = Turtle()
 tom.speed("fastest")
-
+tom.penup()
 tom.hideturtle()
 tom.setheading(225)
 tom.forward(300)
